@@ -5,7 +5,7 @@ Public Enum Loading_Type
     Back = 1
 End Enum
 
-Private Function Loading(Step As Integer, Span As Integer, Degree As Integer) As Double
+Private Function Loading(Step As Integer, Span As Integer, Degree As Double) As Double
     
     Span = Span + 1 'Loading upto end point
     
@@ -39,15 +39,15 @@ Private Function Loading(Step As Integer, Span As Integer, Degree As Integer) As
 End Function
 
 
-Public Function BackLoading(Step As Integer, Span As Integer, Degree As Integer) As Double
+Public Function BackLoading(Step As Integer, Span As Integer, Degree As Double) As Double
     BackLoading = Loading(Step, Span, Degree * Back)
 End Function
 
 
-Public Function FrontLoading(Step As Integer, Span As Integer, Degree As Integer) As Double
+Public Function FrontLoading(Step As Integer, Span As Integer, Degree As Double) As Double
     FrontLoading = Loading(Step, Span, Degree * Front)
 End Function
 
-Public Function NormalLoading(Step As Integer, Span As Integer, Degree As Integer) As Double
-    NormalLoading = Application.WorksheetFunction.Norm_Dist(Step, Span / 2, Span / Degree, False)
+Public Function NormalLoading(Step As Integer, Span As Integer, Degree As Double) As Double
+    NormalLoading = Application.WorksheetFunction.Binom_Dist(Step, Span, Degree, False) 'Norm_Dist(Step, Span / 2, Span / Degree, False)
 End Function
